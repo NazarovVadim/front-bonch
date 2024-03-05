@@ -1,12 +1,19 @@
 <template>
-    <a href="#" @click.stop>
+    <a href="#" v-on:click="link">
         <slot></slot>
     </a>
 </template>
 
 <script>
     export default {
-        name: 'my-link'
+        name: 'my-link',
+        methods: {
+            link(e) {
+                e.preventDefault()
+                console.log(e.currentTarget.href)
+                // http://localhost:8080/login
+            }
+        },
     }
 </script>
 
