@@ -12,7 +12,7 @@
     
 <style scoped>
     .header{
-        background-color: #24263B;
+        user-select: none;
         display: flex;
         justify-content: right;
         align-items: center;
