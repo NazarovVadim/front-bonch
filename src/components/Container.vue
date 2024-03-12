@@ -1,7 +1,7 @@
 <template>
-    <container class="container">
+    <div class="container">
         <slot></slot>
-    </container>
+    </div>
 </template>
 
 <script>
@@ -13,8 +13,8 @@
 <style scoped>
     .container{
         max-width: 1200px;
-        height: 90vh;
-        padding: 0 160px 0 30px;
+        padding: 160px 0 30px 0;
         display: flex;
+        margin: auto;
     }
 </style>

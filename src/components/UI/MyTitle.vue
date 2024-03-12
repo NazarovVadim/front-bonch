@@ -14,7 +14,7 @@
 <style>
     .h1{
         font-weight: 500;
-        font-size: 64px;
+        font-size: 36px;
         
     }
 
