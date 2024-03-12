@@ -9,8 +9,10 @@
             <my-link href="">Контакты</my-link>
             <my-button>Войти</my-button>    
         </my-header>
-        <my-main class="main">   
+        <my-main class="main">
         </my-main>
+        
+
     </div>
 </template>
 
