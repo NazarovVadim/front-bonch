@@ -7,12 +7,13 @@
             <my-link href="">Навыки</my-link>
             <my-link href="">Отзывы</my-link>
             <my-link href="">Контакты</my-link>
-            <my-button>Войти</my-button>    
+            <my-button>Войти</my-button>
         </my-header>
         <my-main class="main">
         </my-main>
-        
-
+        <my-container>
+            hhh
+        </my-container>
     </div>
 </template>
 

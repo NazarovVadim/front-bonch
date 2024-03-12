@@ -45,13 +45,13 @@
 </script>
 
 <style scoped>
-.main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
-    width: 100%;
-}
+    .main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        width: 100%;
+    }
 .socials{
     display: flex;
     flex-direction: column;
