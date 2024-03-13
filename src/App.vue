@@ -11,9 +11,9 @@
         </my-header>
         <my-main class="main">   
         </my-main>
-        <container>
+        <my-container>
             хуй
-        </container>
+        </my-container>
     </div>
 </template>
 
