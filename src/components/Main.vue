@@ -7,7 +7,7 @@
         </div>
         <div class="content">
             <h2 class="h2">Добро пожаловать в мое портфолио</h2>
-            <my-title>
+            <my-title style="font-size: 64px;">
                 Вадим Назаров,<strong style="color: #FE461C;"> VueJS</strong> разработчик
             </my-title>
             <my-paragraph>
