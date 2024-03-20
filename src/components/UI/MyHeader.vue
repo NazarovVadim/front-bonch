@@ -1,6 +1,6 @@
 <template lang="">
     <header class="header">
-        <my-link href="">Обо мне</my-link>
+            <my-link href="">Обо мне</my-link>
             <my-link href="">Портфолио</my-link>
             <my-link href="">Услуги</my-link>
             <my-link href="">Навыки</my-link>

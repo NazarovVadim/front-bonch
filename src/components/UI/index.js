@@ -7,6 +7,8 @@ import Main from '@/components/Main'
 import Container from '@/components/Container'
 import MySubtitle from '@/components/UI/MySubtitle'
 import About from '@/components/About'
+import Portfolio from '@/components/Portfolio'
+
 
 
 export default [
@@ -18,6 +20,7 @@ export default [
     Main,
     Container,
     MySubtitle,
-    About
+    About,
+    Portfolio,
 
 ]

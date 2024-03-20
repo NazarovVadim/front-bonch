@@ -3,7 +3,7 @@
         <my-header></my-header>
         <my-main class="main"></my-main>
         <my-about></my-about>
-        
+        <my-portfolio></my-portfolio>
     </div>
 </template>
 
