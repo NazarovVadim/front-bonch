@@ -4,46 +4,116 @@
             <my-subtitle>Портфолио</my-subtitle>
             <my-title>Некоторые из моих проектов</my-title>
             <div class="filter">
-                <my-link>Все</my-link>
+                <my-link class="active">Все</my-link>
                 <my-link>Мобильные</my-link>
                 <my-link>Вебсайты</my-link>
                 <my-link>Другое</my-link>
             </div>
             <div class="content">
-                <div class="">
-                    <h2>Mobile Mockup Design</h2>
-                    <span>existing solutions offer to solve ...</span>
+                
+                <div class="card-portfolio" v-for="card in cards" :key="card.id" :style="card.style" @click="openLink(card.url)" style="position: relative; transition: all .2s ease;" >
+                    <h2>{{ card.title }}</h2>
+                    <span>{{ card.subtitle }}</span>
+                    <img  :src="getUrl(card.pic)" style=" position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: -1; border-radius: 8px;" />
                 </div>
-                <div class="">
-                    <h2>Mobile Mockup Design</h2>
-                    <span>existing solutions offer to solve ...</span>
-                </div>
-                <div class="">
-                    <h2>Mobile Mockup Design</h2>
-                    <span>existing solutions offer to solve ...</span>
-                </div>
-                <div class="">
-                    <h2>Mobile Mockup Design</h2>
-                    <span>existing solutions offer to solve ...</span>
-                </div>
-                <div class="">
-                    <h2>Mobile Mockup Design</h2>
-                    <span>existing solutions offer to solve ...</span>
-                </div>
-                <div class="">
-                    <h2>Mobile Mockup Design</h2>
-                    <span>existing solutions offer to solve ...</span>
-                </div>
+
+                
             </div>
         </div>
+        <div class=""></div>   
     </my-container>
     
 </template>
 
 <script>
+    
     export default {
-        name: 'my-portfolio'
+        name: 'my-portfolio',
+        methods: {
+            getUrl(pic) {
+                return require('../imgs/' + pic);
+            },
+            openLink(url){
+                window.open(url, '_blank');
+            }
+        },
+        data() {
+            return {
+                cards: [
+                {
+                    id: 1,
+                    style: {
+                        gridArea: 'A',
+                        background: 'linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8))'
+                    },
+                    pic: 'relax.png',
+                    url: 'https://github.com/NazarovVadim/Relax-Live',
+                    title: 'Relax Live',
+                    subtitle: 'Сайт строительной компании'
+                },
+                {
+                    id: 2,
+                    style: {
+                        gridArea: 'B',
+                        background: 'linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8))'
+                    },
+                    pic: '3dglo.png',
+                    url: 'https://github.com/NazarovVadim/3dgloBuild',
+                    title: '3D Glo Build',
+                    subtitle: 'Сайт компании 3D моделирования'
+                },
+                {
+                    id: 3,
+                    style: {
+                        gridArea: 'C',
+                        background: 'linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8))'
+                    },
+                    pic: 'marvel.png',
+                    url: 'https://github.com/NazarovVadim/marvel-s_characters',
+                    title: "Marvel's Characters",
+                    subtitle: 'Сайт по персонажам КВМ'
+                },
+                {
+                    id: 4,
+                    style: {
+                        gridArea: 'D',
+                        background: 'linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8))'
+                    },
+                    pic: 'delivery.png',
+                    url: 'https://github.com/NazarovVadim/delivery_food',
+                    title: 'Delivery Food',
+                    subtitle: 'Сайт доставки еды'
+                },
+                {
+                    id: 5,
+                    style: {
+                        gridArea: 'E',
+                        background: 'linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8))'
+                    },
+                    pic: 'starwars.png',
+                    url: 'https://github.com/NazarovVadim/star_wars',
+                    title: 'Star Wars',
+                    subtitle: 'Сайт анонс'
+                },
+                {
+                    id: 6,
+                    style: {
+                        gridArea: 'F',
+                        background: 'linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8))',
+
+                    },
+                    pic: 'wheather.png',
+                    url: 'https://github.com/NazarovVadim/WeatherSpb',
+                    title: 'Wheather SPB',
+                    subtitle: 'Сайт погоды СПб'
+                },
+                 
+                ]
+            }
+        }
     }
+
+
 </script>
 
 <style scoped>
@@ -59,6 +129,9 @@
     }
     .filter{
         margin-top: 50px;
+    }
+    .active{
+        color: #FE461C;
     }
     a{
         font-weight: 600;
@@ -78,7 +151,7 @@
             "B B B B   D D D D   F F F F";
         }
     .content div{
-        background-image: linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8)),url("../imgs/main-photo.jpg");
+        background-image: linear-gradient(rgba(23, 45, 41, 0.2), rgba(23, 45, 41, 0.8));
         border-radius: 8px;
         padding: 30px;
         display: flex;
@@ -86,27 +159,28 @@
         justify-content: end;
         flex-direction: column;
         cursor: pointer;
+        transition: all .3s ease;
+    }
+    .card-porfolio span{
+        opacity: .2;
+        transition: all .2s ease;
+
+    }
+    .card-porfolio h2{
+        opacity: .2;
         transition: all .2s ease;
     }
+
     .content div:hover{
-        background-color: rgba(0,0,0,0.2);
+        background-image: linear-gradient(rgba(23, 45, 41, 0), rgba(23, 45, 41, 0.8));
+        transform: translateY(-5px);
+
     }
-    .content div:nth-child(1){
-        grid-area: A;
+    .card-porfolio:hover span{
+        opacity: 1;
     }
-    .content div:nth-child(2){
-        grid-area: B;
+    .card-porfolio:hover h2{
+        opacity: 1;
     }
-    .content div:nth-child(3){
-        grid-area: C;
-    }
-    .content div:nth-child(4){
-        grid-area: D;
-    }
-    .content div:nth-child(5){
-        grid-area: E;
-    }
-    .content div:nth-child(6){
-        grid-area: F;
-    }
+    
 </style>

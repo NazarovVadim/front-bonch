@@ -1,16 +1,29 @@
 <template>
     <div class="app">
-        <my-header></my-header>
+        <my-header :email-data="emailData" @update-email-data="emailData = $event"></my-header>
         <my-main class="main"></my-main>
         <my-about></my-about>
         <my-portfolio></my-portfolio>
+        <my-services></my-services>
+        <my-register-modal></my-register-modal>
+        <my-login-modal @update-email-data="emailData = $event"></my-login-modal>
     </div>
 </template>
 
 <script>
 
+    export default {
 
+        data(){
+            return {
+                emailData: '',
+            }
+        },
+        
+
+    }
 </script>
+
 
 <style>
     *{
@@ -27,5 +40,10 @@
 
     
 </style>
+
+
+
+
+
 
 

@@ -41,7 +41,7 @@
                         </my-paragraph>
                     </div>
                 </div>
-                <my-button>Скачать резюме</my-button>
+                <my-button @click="openLink">Скачать резюме</my-button>
             </div>
         </my-container>
     </div>
@@ -49,7 +49,12 @@
 
 <script>
     export default {
-        name: 'my-about'
+        name: 'my-about',
+        methods: {
+            openLink() {
+                window.open('https://drive.google.com/file/d/1JffOMV1TpfGgkHMtJM-lFgX23Hul-jeh/view?usp=sharing', '_blank');
+            }
+        }
     }
 </script>
 
