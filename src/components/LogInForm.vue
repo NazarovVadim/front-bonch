@@ -9,14 +9,14 @@
                 <my-button type="submit" @click.prevent="regBtn()">Войти</my-button>
                 
             </form>
-            <my-link href="#" class="register" @click.prevent=""> Нет аккаунта? Зарегистрироваться </my-link>
+            <my-link href="#" class="register" @click.prevent="changeModal()"> Нет аккаунта? Зарегистрироваться </my-link>
             <my-link class="google" @click.prevent="signWithGoogle()">Войти через Google</my-link>
 
         </div>
     </div>
 </template>
 <script>
-    import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+    import { GoogleAuthProvider, getAuth, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
     import {ref} from "vue"
 
     export default {
@@ -57,7 +57,15 @@
             }
 
             const signWithGoogle = () => {
-
+                const provider = new GoogleAuthProvider();
+                signInWithPopup(getAuth(), provider)
+                .then((result) => {
+                    let emailNew = result.user.email;
+                    emit('update-email-data', emailNew);
+                    document.querySelector('.modal').style.cssText = `display: none;`;
+                }).catch((err) => {
+                    console.log(err);
+                })
             };
 
             return {
@@ -75,6 +83,10 @@
                 if(event.target == log)
                     log.style.cssText = `display: none;`;
             },
+            changeModal(){
+                document.querySelector('.modal').style.cssText = `display:none;`;
+                document.querySelector('.modal-reg').style.cssText = `display:block;`;
+            }
         }
         
         

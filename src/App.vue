@@ -5,7 +5,7 @@
         <my-about></my-about>
         <my-portfolio></my-portfolio>
         <my-services></my-services>
-        <my-register-modal></my-register-modal>
+        <my-register-modal @update-email-data="emailData = $event"></my-register-modal>
         <my-login-modal @update-email-data="emailData = $event"></my-login-modal>
     </div>
 </template>

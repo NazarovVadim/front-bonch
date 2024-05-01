@@ -1,13 +1,9 @@
 import { createApp } from 'vue'
 import components from '@/components/UI'
 import App from './App.vue'
-// // import { VueRecaptchaPlugin } from 'vue-recaptcha/head'
-// import { VueReCaptcha, useReCaptcha } from 'vue-recaptcha-v3'
-
-
+import { VueReCaptcha, useReCaptcha } from 'vue-recaptcha-v3'
  // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,17 +21,10 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app1 = initializeApp(firebaseConfig);
-//const analytics = getAnalytics(app1);
 
-
-const app = createApp(App);
+const app = createApp(App).use(VueReCaptcha, { siteKey: '6LcDq78pAAAAAN0PX-vdUeiSskudlrJDHVcIlE1e' });
 
 components.forEach(component => {app.component(component.name, component)})
-// app.use(VueRecaptchaPlugin, {
-//   v2SiteKey: '6LenAM0pAAAAAFxUdjLQUkomafDc36PaEXLtnTyh',
-//   v3SiteKey: '6LcDq78pAAAAAN0PX-vdUeiSskudlrJDHVcIlE1e',
-// })
-
 
 
 app.mount('#app')

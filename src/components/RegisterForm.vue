@@ -17,8 +17,9 @@
 </template>
 
 <script>
-    import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+    import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
     import {ref} from "vue"
+    import { VueReCaptcha, useReCaptcha } from 'vue-recaptcha-v3'
     
     export default {
         
@@ -28,14 +29,27 @@
                 
             }
         },
-        setup(){
+        emits: ['update-email-data'],
+        setup(props, {emit}){
             const email = ref("");
             const password = ref("");
             const checkpass = ref("");
-            const errMsg = ref("");
+
+            const { executeRecaptcha, recaptchaLoaded } = useReCaptcha()
+            const recaptcha = async () => {
+                // (optional) Wait until recaptcha has been loaded.
+                await recaptchaLoaded()
+
+                // Execute reCAPTCHA with action "login".
+                const token = await executeRecaptcha('login')
+
+                // Do stuff with the received token.
+                }
+
             const reg =() => {
 
                 if(checkpass.value === password.value){
+                    recaptcha();
                     createUserWithEmailAndPassword(getAuth(), email.value, password.value)
                     .then((data) => {
                         document.querySelector('.modal-reg').style.cssText = `display: none;`;
@@ -53,7 +67,15 @@
             };
 
             const signWithGoogle = () => {
-
+                const provider = new GoogleAuthProvider();
+                signInWithPopup(getAuth(), provider)
+                .then((result) => {
+                    let emailNew = result.user.email;
+                    emit('update-email-data', emailNew);
+                    document.querySelector('.modal-reg').style.cssText = `display: none;`;
+                }).catch((err) => {
+                    console.log(err);
+                })
             };
 
             return {
@@ -61,7 +83,8 @@
                 password,
                 checkpass,
                 reg,
-                signWithGoogle
+                signWithGoogle,
+                recaptcha
             }
         },
         methods: {
